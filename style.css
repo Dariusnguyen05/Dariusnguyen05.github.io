@@ -1,2 +1,111 @@
 @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;700&display=swap');
-body{margin:0;padding:0;font-family:'Be Vietnam Pro',sans-serif;background:linear-gradient(135deg,#667eea,#764ba2);color:white;display:flex;justify-content:center;align-items:center;min-height:100vh}.container{text-align:center;padding:20px;max-width:600px;width:90%}.profile-picture{width:120px;height:120px;border-radius:50%;border:4px solid white;box-shadow:0 4px 15px rgba(0,0,0,.2);object-fit:cover}h1{font-size:2em;margin:10px 0 5px;font-weight:700}header p{font-size:1em;font-weight:300;margin-bottom:30px}.links{display:flex;flex-direction:column;gap:15px}.link-card{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.3);border-radius:10px;padding:15px;color:white;text-decoration:none;font-size:1.1em;display:flex;align-items:center;justify-content:center;gap:10px;transition:all .3s ease;backdrop-filter:blur(5px)}.link-card:hover{background:rgba(255,255,255,.2);transform:scale(1.05)}.link-card i{font-size:1.2em}footer{margin-top:40px;font-size:.9em;opacity:.8}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    background-color: #6a70a9; /* Màu nền chính khi sticker không tải được */
+    color: white;
+    position: relative; /* Cần thiết cho lớp giả ::before */
+    z-index: 1; /* Đảm bảo body ở trên lớp nền sticker */
+}
+
+/* Lớp giả tạo nền sticker */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Đưa lớp nền xuống dưới cùng */
+    opacity: 0.15; /* Độ mờ của sticker, bạn có thể chỉnh từ 0.1 đến 1 */
+    
+    /* Các hình sticker được lấy từ nguồn miễn phí, lặp lại ngẫu nhiên */
+    background-image: 
+        url(https://www.transparentpng.com/thumb/strawberry/aT3GzC-strawberry-love-heart-png.png),
+        url(https://www.transparentpng.com/thumb/watermelon/YFSs9Y-watermelon-cut-piece.png),
+        url(https://www.transparentpng.com/thumb/boba/bL4S5E-boba-tea-clipart-png.png);
+    
+    background-repeat: repeat; /* Lặp lại các hình nền */
+    
+    /* Kích thước và vị trí để tạo hiệu ứng ngẫu nhiên */
+    background-size: 100px, 80px, 90px;
+    animation: moveBackground 30s linear infinite;
+}
+
+/* Hiệu ứng chuyển động nhẹ cho nền */
+@keyframes moveBackground {
+    from { background-position: 0 0, 50px 50px, 100px 100px; }
+    to { background-position: 300px 300px, 350px 350px, 400px 400px; }
+}
+
+
+.container {
+    text-align: center;
+    padding: 20px;
+    max-width: 600px;
+    width: 90%;
+    background: rgba(0, 0, 0, 0.2); /* Nền container hơi tối để nổi bật */
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.profile-picture {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    object-fit: cover;
+}
+
+h1 {
+    font-size: 2em;
+    margin: 10px 0 5px;
+    font-weight: 700;
+}
+
+header p {
+    font-size: 1em;
+    font-weight: 300;
+    margin-bottom: 30px;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.link-card {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    padding: 15px;
+    color: white;
+    text-decoration: none;
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+
+.link-card:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+.link-card i {
+    font-size: 1.2em;
+}
+
+footer {
+    margin-top: 40px;
+    font-size: 0.9em;
+    opacity: 0.8;
+}
